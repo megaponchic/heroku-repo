@@ -81,7 +81,7 @@ EOF
     system("curl '#{repo_url}' | tar xzf -")
     Dir.chdir("..")
     system("git init")
-    system("git reset --hard master")
+    system("git reset --hard vet")
     system("git remote add heroku git@heroku.com:#{app}.git")
   end
 
@@ -105,7 +105,7 @@ EOF
   # Force a rebuild of the master branch
   def rebuild
     reset
-    system "git push #{extract_app_from_git_config || "heroku"} master"
+    system "git push #{extract_app_from_git_config || "heroku"} vet:master"
   end
 
   private
